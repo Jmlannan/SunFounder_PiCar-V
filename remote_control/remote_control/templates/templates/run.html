@@ -254,43 +254,43 @@
 
 
       function controlstick(gamepad){
-                    //updade gamepads(for chrome support)
-                    var gamepads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads : []);
-                    var gamepad = gamepads[0];
-                    var deadzone = .05
+        //updade gamepads(for chrome support)
+        var gamepads = navigator.getGamepads ? navigator.getGamepads() : (navigator.webkitGetGamepads ? navigator.webkitGetGamepads : []);
+        var gamepad = gamepads[0];
+        var deadzone = .05;
 
-                    let xpos = gamepad.axes[0];
-                    let ypos = gamepad.axes[1];
-                    let speed = MATH.sqrt(xpos^2 + ypos^2)
+        let xpos = gamepad.axes[0];
+        let ypos = gamepad.axes[1];
+        let speed = MATH.sqrt(xpos^2 + ypos^2);
 
-                    set_speed(speed.toString())
+        set_speed(speed.toString());
 
-                    if (xpos > deadzone){
-                      if(ypos > deadzone){
-                        //left+forward
-                        forward_left()
-                      }else if{
-                        //left+backwards
-                        backward_left()
-                      }else{
-                      
-                      }
-                    }else if (xpos < deadzone){
-                      if(ypos > deadzone){
-                        //right+forward
-                        forward_right()
-                      }else if{
-                        //right+backward
-                        backward_left()
-                      }else{
-                        //right
-                      }
-                    }else {
-                      run_action('stop')
-                    }
+        if (xpos > deadzone){
+          if(ypos > deadzone){
+            //left+forward
+            forward_left();
+          }else if(ypos < -deadzone){
+            //left+backwards
+            backward_left();
+          }else{
+            
+          }
+          }else if (xpos < deadzone){
+            if(ypos > deadzone){
+              //right+forward
+              forward_right();
+            }else if(ypos < -deadzone{
+              //right+backward
+              backward_left();
+            }else{
+              //right
+            }
+          }else {
+            run_action('stop');
+          }
 
-                    console.log("Ran controlstick!")
-                }
+          console.log("Ran controlstick!");
+      }
 
             window.addEventListener("gamepadconnected", function(e){
                 var gp = navigator.getGamepads()[e.gamepad.index];
