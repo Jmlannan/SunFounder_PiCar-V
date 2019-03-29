@@ -261,7 +261,7 @@
 
         let xpos = gamepad.axes[0];
         let ypos = gamepad.axes[1];
-        let speed = Math.sqrt(xpos^2 + ypos^2);
+        let speed = Math.floor(Math.sqrt(xpos^2 + ypos^2));
 
         set_speed(speed.toString());
 
